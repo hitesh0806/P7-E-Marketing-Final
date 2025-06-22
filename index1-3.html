@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="UserDetails"></div>
+        <div><img src="Product image1.png" style="
+            position:absolute;
+            width: 350px;
+            left:40px;
+            top:150px;
+            ">
+        <ls style="
+            position:absolute;
+            background-color: rgba(239, 245, 244, 0.582);
+            text-align: center;
+            padding: 20px;
+            width: 200px;
+            left:400px;
+            top:170px;
+        ">
+        <h4>Conditioner</h4>
+        <button onclick="productquantityadd()">+1</button>
+        <button onclick="productquantitysubtract()">-1</button>
+        <h4 id="quantity"></h4>
+        <h4 id="price"></h4>
+        <button onclick="reset()">Reset</button><br><br>
+        <button onclick="addtocart()">Add to cart</button><br><br>
+        <button onclick="viewcart()">View cart</button>
+        </ls>
+    </div>
+    <script>
+window.onload=function()
+{
+    let x=JSON.parse(localStorage.getItem('profile1'));
+document.querySelector('#UserDetails').innerHTML=`<h3>Name: ${x.nam}</h3><h3>Number: ${x.number}</h3><h3>Address: ${x.address}</h3><h3>E-mail: ${x.email}</h3>`;
+const quantity=document.getElementById('quantity');
+const price=document.getElementById('price');
+let details=JSON.parse(localStorage.getItem('productdetails'))||
+{
+    a1:1,
+    b:20,
+    e1:20,
+};
+quantity.textContent=`Quantity:${details.a1}`;
+price.textContent=`Price:${details.e1}`;
+window.productquantityadd=function()
+{
+    
+    details.a1++;
+    details.e1=details.b*details.a1;
+    quantity.textContent='Quantity: '+details.a1;
+    price.textContent='Price: '+details.e1;
+    
+}
+window.productquantitysubtract=function()
+{
+    
+    details.a1--;
+    details.e1=details.b*details.a1;
+    quantity.textContent='Quantity: '+details.a1;
+    price.textContent='Price: '+details.e1;
+    
+}
+
+window.reset=function()
+{
+    details.a1=1;
+    details.b=20;
+    details.e1=20;
+    localStorage.removeItem('productdetails');
+    quantity.textContent=`Quantity:${details.a1}`;
+    price.textContent=`Price:${details.b}`;
+}
+window.addtocart=function()
+{
+ localStorage.setItem('productdetails',JSON.stringify(details));
+ alert('Added to cart!!');   
+}
+window.viewcart=function()
+{
+    window.open("index1-4.html", "_blank");
+}
+}
+    </script>
+    </body>
+    
+</html>

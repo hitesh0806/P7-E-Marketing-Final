@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing Page</title>
+    <style>
+   
+    </style>
+</head>
+<body>
+    <div class="bill-container">
+        <h2>Billing Summary</h2>
+        <h4>Product name: Conditioner</h4>
+        <div class="bill-row" id="description"></div>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCHrjmRlLvwxxdWxhSvjzrlrHkwlTzXCcvJRJnjsCbVZwwRcznwtjtkGFBBSQRxWqXVTMVsq" target="_blank">Place order</a>
+        
+    </div>
+
+    <script>
+        window.onload = function () {
+            const details = JSON.parse(localStorage.getItem('productdetails'));
+            if (details) {
+                document.getElementById('description').innerHTML =`<div>Quantity: ${details.a1}</div><br><div>Total: $${details.e1}</div><br>`;
+            } else {
+                document.querySelector('.bill-container').innerHTML = '<p>No content saved</p>';
+            }
+        }
+    </script>
+</body>
+</html>
