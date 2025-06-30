@@ -22,7 +22,7 @@ function create()
 }
 function showprofile1()
 {
-    document.getElementById('content').innerHTML=`<p>Name: ${docs.nam}</p><p>Number: ${docs.number}</p><p>Address: ${docs.address}</p><br><p>E-mail: ${docs.email}</p><p>Password: ${docs.password}</p><br>`;  
+    document.getElementById('content').innerHTML=`<p>Name: ${docs.nam}</p><p>Number: ${docs.number}</p><div>Address: ${docs.address}</div><p>E-mail: ${docs.email}</p><p>Password: ${docs.password}</p><br>`;  
 }
 function backtologin()
 {
