@@ -27,6 +27,7 @@
         <h4 id="price"></h4>
         <button onclick="reset()">Reset</button><br><br>
         <button onclick="addtocart()">Add to cart</button><br><br>
+        <p id="addtocartdisplay"></p>
         <button onclick="viewcart()">View cart</button>
         </ls>
     </div>
@@ -73,11 +74,22 @@ window.reset=function()
     quantity.textContent=`Quantity:${details.a1}`;
     price.textContent=`Price:${details.b}`;
 }
-window.addtocart=function()
-{
- localStorage.setItem('productdetails',JSON.stringify(details));
- alert('Added to cart!!');   
+
+window.addtocart=function(){
+    localStorage.setItem('productdetails',JSON.stringify(details));
+      document.querySelector('#addtocartdisplay').innerHTML=`<p>Added to cart</p>`;
+    let isinterval=false;
+    let intervalid;
+    if(!isinterval){
+    intervalid = setInterval(function(){
+      document.querySelector('#addtocartdisplay').innerHTML=`<p></p>`;
+    },3000);
+    setInterval(function(){
+      clearInterval(intervalid);
+    },4000);
+    }
 }
+
 window.viewcart=function()
 {
     window.open("index1-4.html", "_blank");
